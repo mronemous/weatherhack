@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {
+.controller('DashCtrl', function($scope, $http) {
 
 	var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
 
@@ -18,7 +18,11 @@ angular.module('starter.controllers', [])
 	});
 
 	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
+
+		//alert("click");
+		//infowindow.open(map,marker);
+		
+		
 	});
 
 	$scope.map = map;
