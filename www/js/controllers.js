@@ -47,9 +47,19 @@ angular.module('starter.controllers', [])
 		//alert("click");
 		//infowindow.open(map,marker);
 		
-		
 	});
+	
+	//Example of making a http request.
+	$http.get(CONFIG.host + '/wsrest/rest/contact').then(function(resp) {
+    console.log('Success', resp);
 
+    // For JSON responses, resp.data contains the result
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  });
+	
+	
 	$scope.map = map;
 	
 })
