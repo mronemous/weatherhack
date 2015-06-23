@@ -2,11 +2,30 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
 
-	var myLatlng = new google.maps.LatLng(43.07493,-89.381388);
+    
+    var heatmapData = [
+  new google.maps.LatLng(37.782, -122.447),
+  new google.maps.LatLng(37.782, -122.445),
+  new google.maps.LatLng(37.782, -122.443),
+  new google.maps.LatLng(37.782, -122.441),
+  new google.maps.LatLng(37.782, -122.439),
+  new google.maps.LatLng(37.782, -122.437),
+  new google.maps.LatLng(37.782, -122.435),
+  new google.maps.LatLng(37.785, -122.447),
+  new google.maps.LatLng(37.785, -122.445),
+  new google.maps.LatLng(37.785, -122.443),
+  new google.maps.LatLng(37.785, -122.441),
+  new google.maps.LatLng(37.785, -122.439),
+  new google.maps.LatLng(37.785, -122.437),
+  new google.maps.LatLng(37.785, -122.435)
+];
+
+    
+	var myLatlng = new google.maps.LatLng(37.774546, -122.433523);
 
 	var mapOptions = {
 		center: myLatlng,
-		zoom: 16,
+		zoom: 13,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map(document.getElementById("map"), mapOptions);
@@ -17,6 +36,12 @@ angular.module('starter.controllers', [])
 		title: 'Uluru (Ayers Rock)'
 	});
 
+    
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatmapData
+    });
+    heatmap.setMap(map);
+    
 	google.maps.event.addListener(marker, 'click', function() {
 
 		//alert("click");
