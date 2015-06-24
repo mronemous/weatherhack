@@ -1,9 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http) {
+.controller('DashCtrl', function($scope, $http, Filters) {
    
 	  $scope.$on('$ionicView.enter', function(e) {    
 			
+			var filters = Filters.all();
+			
+			//TODO: Reload and apply new filters.
 			
 		});
 	
@@ -128,10 +131,8 @@ angular.module('starter.controllers', [])
     $scope.chat = Chats.get($stateParams.chatId);
 })
 
-.controller('FilterCtrl', function($scope) {
-    $scope.settings = {
-        enableFriends: true
-    };
+.controller('FilterCtrl', function($scope, Filters) {
+    $scope.filters = Filters.all();
 })
 
 .controller('AccountCtrl', function($scope) {

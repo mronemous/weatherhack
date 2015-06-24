@@ -1,44 +1,39 @@
 <ion-view view-title="Filter">
   <ion-content>
     <ion-list>
-    <ion-toggle  ng-model="settings.livesAlone">
+    <ion-toggle  ng-model="filters.livesAlone">
         Lives Alone
     </ion-toggle>
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.withoutCar">
         Without Car
     </ion-toggle>
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.over65">
         Over 65
     </ion-toggle>
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.poverty">
         Poverty
     </ion-toggle>
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.chronicMedical">
         Chronic Medical
     </ion-toggle>	
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.requiresElectrical">
         Requires Electrical
     </ion-toggle>	
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.limitedCommunications">
         Limited Communications
     </ion-toggle>	
-		<ion-toggle  ng-model="settings.withoutCar">
+		<ion-toggle  ng-model="filters.heartDisease">
         Heart Disease
+    </ion-toggle>	
+		<ion-toggle  ng-model="filters.lungDisease">
+        Lung Disease
+    </ion-toggle>	
+		<ion-toggle  ng-model="filters.physicalDisability">
+        Physical Disability
+    </ion-toggle>
+		<ion-toggle  ng-model="filters.raisingChildren">
+        Raising Children
     </ion-toggle>		
     </ion-list>
   </ion-content>
 </ion-view>
-
-<!--
-'livesAlone' => 40,
-                'withoutCar'=> 70,
-                'over65' => 90,
-                'poverty' => 5,
-                'chronicMedical' => 80,
-                'requiresElectrical' => 20,
-                'limitedCommunications' => 10,
-                'heartDisease' => 40,
-                'lungDisease' => 35,
-                'physicalDisability' => 35,
-                'raisingChildren' => 5
--->
