@@ -565,15 +565,53 @@ angular.module('starter.controllers', [])
 
     });
 
-    //Example of making a http request.
-    $http.get(CONFIG.host + '/wsrest/rest/contact').then(function(resp) {
-        console.log('Success', resp);
+	
+	
+	
+		var radarLayer = new google.maps.ImageMapType({
+				getTileUrl: function(tile, zoom) {
 
-        // For JSON responses, resp.data contains the result
-    }, function(err) {
-        console.error('ERR', err);
-        // err.status will contain the status code
-    });
+					// convert the tile into a quad key
+					var quadKey = "";
+					for (var level = zoom; level > 0; level--) {
+							var mask = 1 << (level-1);
+
+							var xMask = (tile.x & mask) != 0;
+							var yMask = (tile.y & mask) != 0;
+							if (xMask && yMask) {
+									quadKey += '3';
+							} else if (yMask) {
+									quadKey += '2';
+							}
+							else if (xMask) {
+									quadKey += '1';
+							} else {
+									quadKey += '0';
+							}
+
+					}
+
+					//NOTE: You have to be zoomed out super far to see these.
+					//Hardcoded the date to the latest available from sample set.
+					
+					return 'http://hackathon.weather.com/Maps/imgs/radar/' + '201506240150' + '/' + quadKey + '.png';
+				},
+				tileSize: new google.maps.Size(256, 256),
+				opacity:0.60,
+				name : 'NEXRAD',
+				isPng: true,
+		});		
+	map.overlayMapTypes.push(radarLayer);
+	
+//    //Example of making a http request.
+//    $http.get(CONFIG.host + '/wsrest/rest/contact').then(function(resp) {
+//        console.log('Success', resp);
+//
+//        // For JSON responses, resp.data contains the result
+//    }, function(err) {
+//        console.error('ERR', err);
+//        // err.status will contain the status code
+//    });
 
 
     $scope.map = map;
