@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
     });
 
 
-    var heatmap;
+    var heatmap = null;
     //    // start PloyLine sample
     //    var polyLineData = [
     //        new google.maps.LatLng(37.773379, -122.440542),
@@ -60,9 +60,10 @@ angular.module('starter.controllers', [])
             heatData.push(new google.maps.LatLng(data[i][1], data[i][0]));
         }
 
-        if (!!heatmap)
+        if (heatmap != null) {
             heatmap.setMap(null);
-
+				}
+			
         heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatData,
             radius: 20,
