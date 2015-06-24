@@ -74,6 +74,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+	.state('tab.filter', {
+    url: '/filter',
+    views: {
+      'tab-filter': {
+        templateUrl: 'templates/tab-filter.html',
+        controller: 'FilterCtrl'
+      }
+    }
+  })
+	
   .state('tab.account', {
     url: '/account',
     views: {

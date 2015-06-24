@@ -2,6 +2,11 @@ angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http) {
    
+	  $scope.$on('$ionicView.enter', function(e) {    
+			
+			
+		});
+	
 //    // start PloyLine sample
 //    var polyLineData = [
 //        new google.maps.LatLng(37.773379, -122.440542),
@@ -112,8 +117,6 @@ angular.module('starter.controllers', [])
     // To listen for when this page is active (for example, to refresh data),
     // listen for the $ionicView.enter event:
     //
-    //$scope.$on('$ionicView.enter', function(e) {
-    //});
 
     $scope.chats = Chats.all();
     $scope.remove = function(chat) {
@@ -123,6 +126,12 @@ angular.module('starter.controllers', [])
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
     $scope.chat = Chats.get($stateParams.chatId);
+})
+
+.controller('FilterCtrl', function($scope) {
+    $scope.settings = {
+        enableFriends: true
+    };
 })
 
 .controller('AccountCtrl', function($scope) {
