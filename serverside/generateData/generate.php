@@ -191,6 +191,6 @@ foreach($tracts->Document->Placemark as $PUMA){
 	$pplcnt = count($people);
 	
 	echo "inserted $pplcnt...  ";
-	usleep(700); // 6656 & 1220303
+	usleep(700);
 	}
 }
