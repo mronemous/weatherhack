@@ -103,7 +103,7 @@ angular.module('starter.controllers', [])
     var atlanta = new google.maps.LatLng(33.862100, -84.687900);
     var mapOptions = {
         center: atlanta,
-        zoom: 6,
+        zoom: 5,
         scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
