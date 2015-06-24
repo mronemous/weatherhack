@@ -1,7 +1,8 @@
 // Ionic Starter App
 
 var CONFIG = {
-	host: 'http://192.168.1.5:3000'
+	host: 'http://192.168.1.5:3000',
+	weatherApi: 'http://hackathon.weather.com' 
 };
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
