@@ -1,5 +1,12 @@
 // Ionic Starter App
 
+var CONFIG = {
+	host: 'http://192.168.1.5:3000',
+	peopleApi: 'http://weather.kavisiegel.com',
+	weatherApi: 'http://hackathon.weather.com',
+	radarApi: 'http://mesonet.agron.iastate.edu'
+};
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -67,6 +74,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     })
 
+	.state('tab.filter', {
+    url: '/filter',
+    views: {
+      'tab-filter': {
+        templateUrl: 'templates/tab-filter.html',
+        controller: 'FilterCtrl'
+      }
+    }
+  })
+	
   .state('tab.account', {
     url: '/account',
     views: {

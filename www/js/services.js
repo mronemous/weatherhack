@@ -47,4 +47,15 @@ angular.module('starter.services', [])
       return null;
     }
   };
+})
+
+.factory('Filters', function() {
+	var filters = {
+	};
+	
+	return {
+		all: function() {
+      return filters;
+    }
+	};
 });
