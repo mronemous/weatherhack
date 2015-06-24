@@ -49,7 +49,7 @@ angular.module('starter.controllers', [])
 			
     var heatmap = new google.maps.visualization.HeatmapLayer({
         data: heatData,
-        radius: 80,
+        radius: 20,
         opacity: 0.2
     });
     heatmap.setMap(map);	
