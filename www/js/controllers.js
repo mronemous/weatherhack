@@ -64,10 +64,10 @@ angular.module('starter.controllers', [])
 			heatmap.setMap(map);	
 		}
 	
-	var sanFrancisco = new google.maps.LatLng(37.779213, -122.419256);
+	var sanFrancisco = new google.maps.LatLng(39, -95);
     var mapOptions = {
         center: sanFrancisco,
-        zoom: 13,
+        zoom: 5,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
