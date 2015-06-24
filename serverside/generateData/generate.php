@@ -144,7 +144,10 @@ function insertNeighborhood($population, $coordinates){
 			'lungDisease' => false,
 			'physicalDisability' => false,
 			'raisingChildren' => false,
-			'location' => [$location[0], $location[1]]
+			'location' => [
+				'type' => 'Point',
+				'coordinates' => [(float) $location[0], (float) $location[1]]
+			]
 		];
 	}
 
@@ -171,6 +174,8 @@ while(($data = fgetcsv($handle) ) !== FALSE ){
 
 // This XML file contains data about the shapes of these tracts
 $tracts = simplexml_load_file('2010gztract_13.kml');
+
+$pplcnt = 0; 
 foreach($tracts->Document->Placemark as $PUMA){
 	// Not great XML design on their part, using regex to pull out the tract ID to match the two datasets
 	preg_match('/\<td\>(.+)\<\/td\>/', $PUMA->description[0], $matches);
@@ -182,15 +187,16 @@ foreach($tracts->Document->Placemark as $PUMA){
 	// Remove the last element which is a " "
 	array_pop($polyline);
 	
-	if(count($polyline) > 1){
-	
-	$people = insertNeighborhood($population, $polyline);
-	
-	$database->weatherhack->people->batchInsert($people);
-	
-	$pplcnt = count($people);
-	
-	echo "inserted $pplcnt...  ";
-	usleep(700);
+	if(count($polyline) > 1){	
+		$people = insertNeighborhood($population, $polyline);
+		
+		$database->weatherhack->people->batchInsert($people);
+		
+		$pplcnt = $pplcnt + count($people);
+		
+		echo "inserted $pplcnt...  ";
+		
+		usleep(100);
 	}
 }
+	var_dump($database->lastError());

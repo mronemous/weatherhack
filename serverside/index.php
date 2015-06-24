@@ -18,7 +18,7 @@ $filters = [
 $query = [];
 
 foreach($filters as $filter){
-	if(isset($_GET[$filter])){
+	if(isset($_GET[$filter]) && $_GET[$filter] == "true"){
 		$query[][$filter] = true;
 	}
 }
@@ -34,7 +34,7 @@ if(count($query) == 0){
 	$new = [];
 	foreach($data as $point){
 		if(isset($point['location'])){
-			$new[] = [(float) $point['location'][0], (float) $point['location'][1]];
+			$new[] = [$point['location']['coordinates'][0], $point['location']['coordinates'][1]];
 		}
 	}
 	
