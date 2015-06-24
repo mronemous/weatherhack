@@ -48,10 +48,21 @@ angular.module('starter.services', [])
     }
   };
 })
-
+				
 .factory('Filters', function() {
-	var filters = {
-	};
+	var filters = [
+		{ name: "Lives Alone", value: false, param: "livesAlone"},
+		{ name: "Without Car", value: false, param: "withoutCar"},
+		{ name: "Over 65", value: false, param: "over65"},
+		{ name: "Poverty", value: false, param: "poverty"},
+		{ name: "Chronic Medical", value: false, param: "chronicMedical"},
+		{ name: "Requires Electrical", value: false, param: "requiresElectrical"},
+		{ name: "Limited Communications", value: false, param: "limitedCommunications"},
+		{ name: "Heart Disease", value: false, param: "heartDisease"},
+		{ name: "Lung Disease", value: false, param: "lungDisease"},
+		{ name: "Physical Disability", value: false, param: "physicalDisability"},
+		{ name: "Raising Children", value: false, param: "raisingChildren"}
+	];
 	
 	return {
 		all: function() {

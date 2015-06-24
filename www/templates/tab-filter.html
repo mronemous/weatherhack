@@ -1,38 +1,8 @@
 <ion-view view-title="Filter">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="filters.livesAlone">
-        Lives Alone
-    </ion-toggle>
-		<ion-toggle  ng-model="filters.withoutCar">
-        Without Car
-    </ion-toggle>
-		<ion-toggle  ng-model="filters.over65">
-        Over 65
-    </ion-toggle>
-		<ion-toggle  ng-model="filters.poverty">
-        Poverty
-    </ion-toggle>
-		<ion-toggle  ng-model="filters.chronicMedical">
-        Chronic Medical
-    </ion-toggle>	
-		<ion-toggle  ng-model="filters.requiresElectrical">
-        Requires Electrical
-    </ion-toggle>	
-		<ion-toggle  ng-model="filters.limitedCommunications">
-        Limited Communications
-    </ion-toggle>	
-		<ion-toggle  ng-model="filters.heartDisease">
-        Heart Disease
-    </ion-toggle>	
-		<ion-toggle  ng-model="filters.lungDisease">
-        Lung Disease
-    </ion-toggle>	
-		<ion-toggle  ng-model="filters.physicalDisability">
-        Physical Disability
-    </ion-toggle>
-		<ion-toggle  ng-model="filters.raisingChildren">
-        Raising Children
+    <ion-list>	
+    <ion-toggle  ng-model="filter.value" ng-repeat="filter in filters">
+        {{filter.name}}
     </ion-toggle>		
     </ion-list>
   </ion-content>

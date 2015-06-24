@@ -35,13 +35,15 @@ angular.module('starter.controllers', [])
     function loadData(bounds) {
 
         //alert(JSON.stringify(bounds));			
-
+			
         var filters = Filters.all();
 
+				$scope.title = getTitle(filters);
+			
         $http({
             url: CONFIG.peopleApi + '/index.php',
             method: "GET",
-            params: filters
+            params: getParams(filters)
         }).then(function(resp) {
             console.log('Success', resp);
 
@@ -51,8 +53,32 @@ angular.module('starter.controllers', [])
             console.error('ERR', err);
 
         });
-    }
+    }					
+	
+		function getParams(filters) {
+			var params = {};
+			for(var i=0; i < filters.length; i++) {
+				if(filters[i].value) {
+					params[filters[i].param] = filters[i].value;
+				}
+			}
+			return params;
+		}
+	
+		function getTitle(filters) {
+		
+				var title = [];
 
+				for(var i=0; i < filters.length; i++) {
+					if(filters[i].value) { 
+						title.push(filters[i].name); 
+					}
+				}
+
+				if(title.length == 0) { title.push("Map");}
+				return title.join(", ");
+		}
+	
     function refreshMap(data) {
 
         var heatData = [];
