@@ -84,6 +84,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 	
+	.state('tab.scenario', {
+    url: '/scenario',
+    views: {
+      'tab-scenario': {
+        templateUrl: 'templates/tab-scenario.html',
+        controller: 'ScenarioCtrl'
+      }
+    }
+  })
+	
   .state('tab.account', {
     url: '/account',
     views: {
