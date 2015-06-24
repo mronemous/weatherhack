@@ -524,9 +524,11 @@ angular.module('starter.controllers', [])
 
     
     var heatmap = new google.maps.visualization.HeatmapLayer({
-      data: heatmapData
+      data: heatmapData,
+      radius:80,
+      opacity:0.2
     });
-    heatmap.set('radius', heatmap.get('radius') ? null : 100);
+    //heatmap.set('radius', heatmap.get('radius') ? null : 100);
     //heatmap.set('opacity', heatmap.get('opacity') ? null : 0.2);
     //heatmap.set('gradient', heatmap.get('gradient') ? null : gradient);
 
