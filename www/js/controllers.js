@@ -565,12 +565,12 @@ angular.module('starter.controllers', [])
 
     });
 
-	
-	
-	
 		var radarLayer = new google.maps.ImageMapType({
 				getTileUrl: function(tile, zoom) {
 
+					
+					//zoom = zoom - 8;
+					
 					// convert the tile into a quad key
 					var quadKey = "";
 					for (var level = zoom; level > 0; level--) {
@@ -594,7 +594,9 @@ angular.module('starter.controllers', [])
 					//NOTE: You have to be zoomed out super far to see these.
 					//Hardcoded the date to the latest available from sample set.
 					
-					return 'http://hackathon.weather.com/Maps/imgs/radar/' + '201506240150' + '/' + quadKey + '.png';
+					//return 'http://hackathon.weather.com/Maps/imgs/radar/' + '201506240150' + '/' + quadKey + '.png';
+					return "http://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/" + zoom + "/" + tile.x + "/" + tile.y +".png?"+ (new Date()).getTime(); 
+    
 				},
 				tileSize: new google.maps.Size(256, 256),
 				opacity:0.60,
