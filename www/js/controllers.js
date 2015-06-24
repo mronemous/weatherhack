@@ -38,7 +38,7 @@ angular.module('starter.controllers', [])
 			
 			var filters = Filters.all();
 			
-			$http({url: CONFIG.peopleApi + '/diabetus.php', method: "GET", params: filters}).then(function(resp) {
+			$http({url: CONFIG.peopleApi + '/index.php', method: "GET", params: filters}).then(function(resp) {
 					console.log('Success', resp);
 
 					refreshMap(resp.data);
@@ -59,7 +59,7 @@ angular.module('starter.controllers', [])
 			var heatmap = new google.maps.visualization.HeatmapLayer({
 					data: heatData,
 					radius: 20,
-					opacity: 0.2
+					opacity: 0.4
 			});
 			heatmap.setMap(map);	
 		}
