@@ -120,23 +120,39 @@ angular.module('starter.controllers', [])
 	var drawingManager = new google.maps.drawing.DrawingManager({
 			// drawingMode: google.maps.drawing.OverlayType.POLYGON,
 			// Set this when user is expected to draw
+			polygonOptions:{
+				fillOpacity: 0
+			},
 			drawingControl: true,
 			drawingControlOptions: {
 				position: google.maps.ControlPosition.TOP_CENTER,
 			drawingModes: [
 				google.maps.drawing.OverlayType.POLYGON,
 			]
+			
 			},
 		});
 		drawingManager.setMap(map);
 		
 		google.maps.event.addListener(drawingManager, 'polygoncomplete', function (polygon) {
 			var points = [];
-			console.log(polygon);
 			polygon.getPath().forEach(function(x){
 				points.push([x.lng(), x.lat()]);
 			});
-			console.log(JSON.stringify(points));
+			
+			$http({
+				url: CONFIG.peopleApi + '/index.php',
+				method: "GET",
+				params: {polygon: JSON.stringify(points), scenario: 'hurricane'}
+			}).then(function(resp) {
+				console.log('Success', resp);
+
+				refreshMap(resp.data);
+
+			}, function(err) {
+				console.error('ERR', err);
+
+			});
 		});
 	// 
 	// ------------
