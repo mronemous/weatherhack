@@ -7,7 +7,7 @@ angular.module('starter.controllers', [])
 		});
 		
 	
-	
+	var heatmap;
 //    // start PloyLine sample
 //    var polyLineData = [
 //        new google.maps.LatLng(37.773379, -122.440542),
@@ -50,13 +50,16 @@ angular.module('starter.controllers', [])
 		}
 	
 		function refreshMap(data) {
-		
+		  
 			var heatData = [];
 			for(var i=0; i < data.length; i++) {
 				heatData.push(new google.maps.LatLng(data[i][1], data[i][0]));
 			}
-
-			var heatmap = new google.maps.visualization.HeatmapLayer({
+            
+            if (!!heatmap && !!heatmap.setMap)
+            heatmap.setMap(null);
+            
+            heatmap = new google.maps.visualization.HeatmapLayer({
 					data: heatData,
 					radius: 20,
 					opacity: 0.4
