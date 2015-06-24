@@ -3,21 +3,10 @@ angular.module('starter.controllers', [])
 .controller('DashCtrl', function($scope, $http, Filters) {
    
 	  $scope.$on('$ionicView.enter', function(e) {    
-			
-			var filters = Filters.all();
-			var url = CONFIG.peopleApi + '/diabetus.php';
-			
-			
-			$http({url: url, method: "GET", params: filters}).then(function(resp) {
-					console.log('Success', resp);
-
-					renderMap(resp.data);
-
-			}, function(err) {
-					console.error('ERR', err);
-
-			});			
+			loadData();
 		});
+		
+	
 	
 //    // start PloyLine sample
 //    var polyLineData = [
@@ -42,9 +31,40 @@ angular.module('starter.controllers', [])
 //
 //    });
 	
-		function renderMap(data) {
+	
+		function loadData(bounds) {
+			
+			//alert(JSON.stringify(bounds));			
+			
+			var filters = Filters.all();
+			
+			$http({url: CONFIG.peopleApi + '/diabetus.php', method: "GET", params: filters}).then(function(resp) {
+					console.log('Success', resp);
+
+					refreshMap(resp.data);
+
+			}, function(err) {
+					console.error('ERR', err);
+
+			});	
+		}
+	
+		function refreshMap(data) {
 		
-		var sanFrancisco = new google.maps.LatLng(37.779213, -122.419256);
+			var heatData = [];
+			for(var i=0; i < data.length; i++) {
+				heatData.push(new google.maps.LatLng(data[i][1], data[i][0]));
+			}
+
+			var heatmap = new google.maps.visualization.HeatmapLayer({
+					data: heatData,
+					radius: 20,
+					opacity: 0.2
+			});
+			heatmap.setMap(map);	
+		}
+	
+	var sanFrancisco = new google.maps.LatLng(37.779213, -122.419256);
     var mapOptions = {
         center: sanFrancisco,
         zoom: 13,
@@ -52,25 +72,16 @@ angular.module('starter.controllers', [])
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+		google.maps.event.addListener(map, 'bounds_changed', (function () {
+			  //loadData(map.getBounds());	
+		}));
+			
     var marker = new google.maps.Marker({
         position: sanFrancisco,
         map: map,
         title: 'Uluru (Ayers Rock)'
     });
 
-    
-		var heatData = [];
-		for(var i=0; i < data.length; i++) {
-			heatData.push(new google.maps.LatLng(data[i][1], data[i][0]));
-		}
-			
-    var heatmap = new google.maps.visualization.HeatmapLayer({
-        data: heatData,
-        radius: 20,
-        opacity: 0.2
-    });
-    heatmap.setMap(map);	
-			
 		var radarLayer = new google.maps.ImageMapType({
 			getTileUrl: function(tile, zoom) {
 
@@ -104,8 +115,6 @@ angular.module('starter.controllers', [])
 			isPng: true,
 		});		
 		map.overlayMapTypes.push(radarLayer);
-			
-		}
 	
     $scope.map = map;
 
