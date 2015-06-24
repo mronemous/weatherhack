@@ -76,6 +76,7 @@ angular.module('starter.controllers', [])
     var mapOptions = {
         center: sanFrancisco,
         zoom: 5,
+        scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
