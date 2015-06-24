@@ -98,10 +98,12 @@ angular.module('starter.controllers', [])
         heatmap.setMap(map);
     }
 
-    var sanFrancisco = new google.maps.LatLng(39, -95);
+	//33.862100, Longitude = -84.687900
+	
+    var atlanta = new google.maps.LatLng(33.862100, -84.687900);
     var mapOptions = {
-        center: sanFrancisco,
-        zoom: 5,
+        center: atlanta,
+        zoom: 6,
         scaleControl: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -140,7 +142,7 @@ angular.module('starter.controllers', [])
 	// ------------
 
     var marker = new google.maps.Marker({
-        position: sanFrancisco,
+        position: atlanta,
         map: map,
         title: 'Uluru (Ayers Rock)'
     });
