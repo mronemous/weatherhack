@@ -1,0 +1,15 @@
+<ion-view view-title="Scenario">
+  <ion-content>
+    <div class="list">	
+			
+		<label class="item item-radio" ng-model="scenarios.value" ng-repeat="scenario in scenarios">
+    <input type="radio" name="group" >
+    <div class="item-content">
+      {{scenario.name}}
+    </div>
+    <i class="radio-icon ion-checkmark"></i>
+  	</label>
+					
+    </div>
+  </ion-content>
+</ion-view>

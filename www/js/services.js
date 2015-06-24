@@ -69,4 +69,18 @@ angular.module('starter.services', [])
       return filters;
     }
 	};
+})
+
+.factory('Scenarios', function() {
+	var scenarios = [
+		{ name: "Hurricane", value: false, param: "livesAlone"},
+		{ name: "Earthquake", value: false, param: "withoutCar"},
+		{ name: "Tornado", value: false, param: "over65"}
+	];
+	
+	return {
+		all: function() {
+      return scenarios;
+    }
+	};
 });

@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http, Filters) {
+.controller('DashCtrl', function($scope, $http, Filters, Scenarios) {
 
     $scope.$on('$ionicView.enter', function(e) {
         loadData();
@@ -37,7 +37,10 @@ angular.module('starter.controllers', [])
         //alert(JSON.stringify(bounds));			
 			
         var filters = Filters.all();
-
+				var scenarios = Scenarios.all();
+				//alert(JSON.stringify(scenarios));
+			
+			
 				$scope.title = getTitle(filters);
 			
         $http({
@@ -204,6 +207,10 @@ angular.module('starter.controllers', [])
 
 .controller('FilterCtrl', function($scope, Filters) {
     $scope.filters = Filters.all();
+})
+
+.controller('ScenarioCtrl', function($scope, Scenarios) {
+    $scope.scenarios = Scenarios.all();
 })
 
 .controller('AccountCtrl', function($scope) {
