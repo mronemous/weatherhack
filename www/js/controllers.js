@@ -5,9 +5,18 @@ angular.module('starter.controllers', [])
 	  $scope.$on('$ionicView.enter', function(e) {    
 			
 			var filters = Filters.all();
+			var url = CONFIG.peopleApi + '/diabetus.php';
 			
-			//TODO: Reload and apply new filters.
 			
+			$http({url: url, method: "GET", params: filters}).then(function(resp) {
+					console.log('Success', resp);
+
+					renderMap(resp.data);
+
+			}, function(err) {
+					console.error('ERR', err);
+
+			});			
 		});
 	
 //    // start PloyLine sample
@@ -98,18 +107,6 @@ angular.module('starter.controllers', [])
 			
 		}
 	
-	
-    $http.get(CONFIG.peopleApi + '/diabetus.php').then(function(resp) {
-        console.log('Success', resp);
-
-				renderMap(resp.data);
-		
-    }, function(err) {
-        console.error('ERR', err);
-
-    });
-
-
     $scope.map = map;
 
 })
